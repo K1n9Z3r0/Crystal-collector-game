@@ -1,53 +1,55 @@
+var randomResult;
+var win = 0;
+var lose = 0;
+var previous = 0;
 
-var computerGuess;
+var startGame = function () {
+    $(".crystals").empty();
+    var images = [
+        "assets/images/blue.png",
+         "assets/images/green.png", 
+         "assets/images/red.png", 
+         "assets/images/yellow.png",
+    ]
+    randomResult = Math.floor(Math.random() * 69) + 30;
+    console.log(randomResult);
+    $("#result").html("Random result " + randomResult);
+    for (var i = 0; i < 4; i++) {
+        console.log(random);
+        var random = Math.floor(Math.random() * 11) + 1;
 
-var wins = 0;
-var losses = 0;
-var guessesLeft = 9;
-var congrats = "You Win!";
-var tooBad = "You lose";
-var guessedLetters = [];
-
-reset();
-
-document.onkeyup = function (event) {
-    var userGuess = event.key;
-    guessedLetters.push(userGuess);
-
-    if (userGuess === computerGuess) {
-        wins++;
-        alert(congrats + " The letter was: " + computerGuess);
-        reset();
+        var crystal = $("<div>");
+        crystal.attr({
+            "class": "crystal", "data-random": random
+        });
+        crystal.css({
+            "background-image":"url('" + images[i] +"')",
+            "background-size":"cover"
+        })
+        $(".crystals").append(crystal);
     }
-
-    else {
-        guessesLeft--;
-    }
-
-    if (guessesLeft === 0) {
-        losses++;
-        alert(tooBad + " The letter was: " + computerGuess);
-        reset();
-    }
-
-
-
-    var html =
-        "<p>Guess what letter I'm thinking of</p>" +
-        "<p>Wins: " + wins +
-        "</p>" + "<p>Loses: " + losses +
-        "<p>Guesses Remaining: " + guessesLeft +
-        "<p>Guessed Letters: " + guessedLetters.join(', ');
-    document.querySelector("#guessingGame").innerHTML = html;
-
-
 }
-function reset() {
-    var computerChoices =
-        ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    console.log(computerGuess);
-    guessesLeft = 9;
-    guessedLetters.length = 0;
-}
+startGame();
+
+$(document).on("click", ".crystal", function () {
+    var num = parseInt($(this).attr("data-random"));
+    previous += num;
+
+    if (previous > randomResult) {
+        alert("you lose");
+        lose++;
+        previous = 0;
+        startGame();
+    }
+    else if (previous === randomResult) {
+        alert("you win");
+        win++;
+        previous = 0;
+        startGame();
+    }
+    $("#currentScore").html(previous);
+    $("#won").html(win);
+    $("#lost").html(lose);
+    console.log(previous);
+});
