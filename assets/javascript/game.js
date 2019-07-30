@@ -13,19 +13,18 @@ var startGame = function () {
     ]
     randomResult = Math.floor(Math.random() * 69) + 30;
     console.log(randomResult);
-    $("#result").html("Random result " + randomResult);
+    
+    $("#result").html("Number to get " + randomResult);
     for (var i = 0; i < 4; i++) {
         console.log(random);
+        
         var random = Math.floor(Math.random() * 11) + 1;
 
-        var crystal = $("<div>");
+        var crystal = $('<div><img src="'+images[i]+'"></div>');
         crystal.attr({
             "class": "crystal", "data-random": random
         });
-        crystal.css({
-            "background-image":"url('" + images[i] +"')",
-            "background-size":"cover"
-        })
+
         $(".crystals").append(crystal);
     }
 }
@@ -48,8 +47,8 @@ $(document).on("click", ".crystal", function () {
         previous = 0;
         startGame();
     }
-    $("#currentScore").html(previous);
-    $("#won").html(win);
-    $("#lost").html(lose);
+    $("#currentScore").html("Your total score : " + previous);
+    $("#won").html("You have won: " + win);
+    $("#lost").html("You have lost: " + lose);
     console.log(previous);
 });

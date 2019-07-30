@@ -11,13 +11,33 @@
 </head>
 
 <body>
-    <p id="result"></p>
-    <div class="crystals">
+    <div id="header">
+    <h1>Crystal Collector!</h1>
+    </div>
+
+    <div id="instructions">
+            
+                    You will be given a random number at the start of the game "Number To Get".
+                    <p> There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your total score.</p>
+                    <p>Win the game by matching your total score to the number to get.</p>
+                    <p>You lose the game if your total score goes above the number to get.</p>
+                    <p>The value of each crystal is hidden from you until you click on it.</p>
+                    <p>Each time when the game starts, the game will change the values of each crystal and the number to get.</p>
+                
 
     </div>
+    <div class="ranNum">
+        <p id="result"></p>
+    </div>
+    
+    <div class="crystals">
+    </div>
+    
+    <div id="scoreBoard">
     <p id="currentScore"></p>
     <p id="won"></p>
     <p id="lost"></p>
+    </div>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 

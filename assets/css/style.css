@@ -1,12 +1,43 @@
 
+body{
+    background-image: url(../images/background.png)
+}
+#header{
+    background-color: orangered;
+    color: white;
+    height: 60px;
+    width: 320px;
+    margin: auto;
+    float: left;
+}
+#instructions{
+    background-color: tan;
+    color: green;
+    font-weight: bold;
+    padding-top: 20px;
+    width: 500px;
+    clear: both;
+}
+
+#result{
+    background-color: #558899;
+    color: #222299;
+    font-size: xx-large;
+    height: 50px;
+    width: 320px;
+}
 .crystals{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    align-items: left;
 }
 
 .crystal{
-    border: 1px solid green;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    background-size: auto;
+}
+#scoreBoard{
+    background-color: #558899;
+    color: white;
+    font-weight: bold;
+    width: 250px;
 }
