@@ -18,7 +18,7 @@ var startGame = function () {
     for (var i = 0; i < 4; i++) {
         console.log(random);
         
-        var random = Math.floor(Math.random() * 11) + 1;
+        var random = Math.floor(Math.random() * 11) + 2;
 
         var crystal = $('<div><img src="'+images[i]+'"></div>');
         crystal.attr({
